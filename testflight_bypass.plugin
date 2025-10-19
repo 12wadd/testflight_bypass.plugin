@@ -1,20 +1,17 @@
-# testflight_bypass.plugin
+# TestFlight SSL Bypass Plugin
+# 确保没有多余的空格和错误的缩进
+
 [General]
-# 插件信息
 name = TestFlight SSL Bypass
 author = YourName
-description = Bypass TestFlight SSL Pinning for Loon
+description = Bypass TestFlight SSL Pinning
 version = 1.0.0
-updateURL = https://raw.githubusercontent.com/你的用户名/你的仓库/testflight_bypass.plugin
 
 [Script]
-# 禁用特定 SSL 验证
-http-request ^https:\/\/testflight\.apple\.com script-path=https://raw.githubusercontent.com/你的用户名/你的仓库/ssl_bypass.js, requires-body=true, tag=TestFlight SSL Bypass, enabled=true
+http-request ^https:\/\/testflight\.apple\.com script-path=https://raw.githubusercontent.com/你的用户名/你的仓库/ssl_bypass.js, requires-body=1, tag=TestFlight SSL Bypass, enabled=true
 
-# 参数捕获脚本
-http-request ^https:\/\/testflight\.apple\.com\/v3\/accounts\/.+\/apps$ script-path=https://raw.githubusercontent.com/你的用户名/你的仓库/loon_capture.js, requires-body=true, tag=TestFlight Capture, enabled=true
+http-request ^https:\/\/testflight\.apple\.com\/v3\/accounts\/.+\/apps$ script-path=https://raw.githubusercontent.com/你的用户名/你的仓库/loon_capture.js, requires-body=1, tag=TestFlight Capture, enabled=true
 
 [MITM]
 hostname = testflight.apple.com
 skip-server-cert-verify = true
-enable = true
